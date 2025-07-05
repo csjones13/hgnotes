@@ -1,0 +1,126 @@
+{
+  "src/utils/test.js": {
+    "hash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "lastModified": "2025-06-22T09:47:37.062Z"
+  },
+  "src/utils/validator.js": {
+    "hash": "38b16727ec737db66d9c71e621cf8134d5f867ccd3f184600733894c2a453821",
+    "lastModified": "2025-06-22T10:03:46.180Z"
+  },
+  "public/js/app.js": {
+    "hash": "680d3c51be074ab3131dd4b87476243b6e735f4ba7cec02b16933657a510f952",
+    "lastModified": "2025-06-30T15:23:37.364Z"
+  },
+  "src/utils/fileHashes.js": {
+    "hash": "844f6646e3ca9f71e4036ee809d54a19a15995b8369752ed5d2c8d461be30217",
+    "lastModified": "2025-06-30T11:20:00.043Z"
+  },
+  "src/utils/jsonParse.js": {
+    "hash": "1c51b2ef419b843932505bb1391e88987afb3fbb4690852d2e7c55f1dee78492",
+    "lastModified": "2025-06-28T05:40:40.071Z"
+  },
+  "src/app.js": {
+    "hash": "5442e69ad1376860fe6180a6b72798a2e0b66180b2516c30390534b52fcc4f7c",
+    "lastModified": "2025-06-30T05:42:58.268Z"
+  },
+  "src/utils/buildIndexHtml.js": {
+    "hash": "b2d25652e0df93a5ab8faa589fc636fd66bb39a5573ab929b805004a419a4988",
+    "lastModified": "2025-07-02T14:29:50.111Z"
+  },
+  "public/js/dynamicLoader.js": {
+    "hash": "237ac5284690b1cfef639b6384739e6ae1bc5aa14a6598267a9b5b16b77fd119",
+    "lastModified": "2025-06-30T07:30:54.352Z"
+  },
+  "public/js/test.js": {
+    "hash": "85c6c69756110b186e0e9001298c6b2fb38fb6c033345f32ad2156cecb436dea",
+    "lastModified": "2025-06-29T05:44:06.547Z"
+  },
+  "server.js": {
+    "hash": "5a05e5134c84021c5b8b72b86dd316895315648f8c13f8b2f3e71aec1de40508",
+    "lastModified": "2025-06-28T14:23:35.427Z"
+  },
+  "public/js/funtest.js": {
+    "hash": "0c9527713b3be6f0fb88da7958bdf6550532b84ddfdb60a7ab84b7971127011a",
+    "lastModified": "2025-06-29T05:45:15.812Z"
+  },
+  "public/js/router.js": {
+    "hash": "429a46c418cbb8d8c2205e2d3ce71a4ed31f0cfb9ddca8757dfb30dd1ddccc70",
+    "lastModified": "2025-06-30T17:21:30.183Z"
+  },
+  "public/js/navigateTo.js": {
+    "hash": "99aee539edb6d8921f5075eb5603c3b19fe0b52abce6fc81be3c47a1205dca42",
+    "lastModified": "2025-06-29T06:13:22.240Z"
+  },
+  "public/manifest.json": {
+    "hash": "54ec1893e2976e37ab5867baccc933b10baa845ecd6b3be237b90a8d13cd763c",
+    "lastModified": "2025-06-29T06:18:30.616Z"
+  },
+  "public/sw.js": {
+    "hash": "65c79e86ea631156548855c08ac3d75231bf095a72d8f467c33ab31aedc2119d",
+    "lastModified": "2025-06-30T17:25:11.019Z"
+  },
+  "public/js/customFetch.js": {
+    "hash": "76655cab9851ef0c55587ab25eb0cc39890edb02a5d016ec7c12246af05f318b",
+    "lastModified": "2025-06-30T15:19:59.788Z"
+  },
+  ".env": {
+    "hash": "645b8f433d69a6e325053477ac26991a8e9acb4ebe8acd3e454b76f71923fc06",
+    "lastModified": "2025-07-02T09:53:00.975Z"
+  },
+  "public/js/pages/home.js": {
+    "hash": "a30d4b1b1ae3f834d2c50ff7801c512b31ceed9ff95eaf977898ad406ff3b157",
+    "lastModified": "2025-07-02T16:08:48.531Z"
+  },
+  "public/js/pages/about.js": {
+    "hash": "cd5d0676e123548ed6d907976089d2169cb6cef1fa7a542a28c09a907b933887",
+    "lastModified": "2025-06-30T07:52:11.183Z"
+  },
+  "src/scss/custom-bootstrap.scss": {
+    "hash": "f27d21a2b4659b0e19661883af11c8e076a418a7605b784660b2c483b85ecf67",
+    "lastModified": "2025-06-30T10:52:25.656Z"
+  },
+  "public/css/grid-templates.css": {
+    "hash": "070ce0dd99bf76e5a1dcdfd19ac0da75ebb9c275cde486e710e9f82355abfb26",
+    "lastModified": "2025-06-30T10:56:43.275Z"
+  },
+  "public/css/generic.css": {
+    "hash": "b34207552718718629d541c196219719cd94bcc808fb0128127a0a6064b9fb9d",
+    "lastModified": "2025-06-30T10:57:27.281Z"
+  },
+  "README.md": {
+    "hash": "bed4045dd58587aeae14f8209cb5e7db85642b6f59283b316845e35d21a31b9f",
+    "lastModified": "2025-06-30T11:07:05.625Z"
+  },
+  "src/utils/loadFileHashes.js": {
+    "hash": "2d62613ece59ee0fee34125dad6bacb4e4b9cd39ef54c9e0ace831e92122ccdb",
+    "lastModified": "2025-06-30T11:10:28.177Z"
+  },
+  "public/css/styles.css": {
+    "hash": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068",
+    "lastModified": "2025-06-30T11:19:25.408Z"
+  },
+  "public/js/util/makeid.js": {
+    "hash": "5338039cc8efe865ed67e20988e7039e19c578a8d219a0f4a813f75bdf7f4ddf",
+    "lastModified": "2025-06-30T14:13:09.864Z"
+  },
+  "public/js/util/getCookie.js": {
+    "hash": "129d5852044548af3a6d3d4ab38ef87b7f2334093775e73b450b2c030fb72b4b",
+    "lastModified": "2025-06-30T14:14:47.921Z"
+  },
+  "public/js/util/loadDependencies.js": {
+    "hash": "06fda5f9fee22f44ba1b81beef6e79d5e2de0900446420e9f28b8404679e00d1",
+    "lastModified": "2025-06-30T14:22:27.908Z"
+  },
+  "public/js/aaatemplates/function-template.js": {
+    "hash": "ff7b258a9d7f77fa44b69791c6978aa1bfc05bfcf588a0e173901dc27e6f7524",
+    "lastModified": "2025-06-30T15:08:26.826Z"
+  },
+  "public/js/aaatemplates/class-template.js": {
+    "hash": "79f39594c5343a606d82e2900d16889a85e2d3e6169acf1d4b89ba7c2bcfd42a",
+    "lastModified": "2025-06-30T15:18:54.912Z"
+  },
+  ".github/workflows/deploy.yml": {
+    "hash": "c36787aad33c7a6e6ec7a7170452c084111319e519bc1a7109ad2ca587428f01",
+    "lastModified": "2025-07-02T14:25:24.355Z"
+  }
+}

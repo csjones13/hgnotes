@@ -1,0 +1,47 @@
+// Import the sass:color module for color.adjust
+@use "sass:color";
+
+// Custom variables based on hippogriff image
+$primary: #F28C38;
+$secondary: #8B4513;
+$light: #F5F1E9;
+$success: #D2B48C;
+$info: #E0D7C2;
+$warning: #F4A261;
+$danger: #7A3D1A;
+
+$body-bg: $light;
+$navbar-light-color: $secondary;
+$navbar-light-active-color: $primary;
+$btn-border-radius: 0.25rem;
+$btn-padding-y: 0.5rem;
+$btn-padding-x: 1rem;
+$card-bg: $light;
+$card-border-color: $info;
+$link-color: $primary;
+$link-hover-color: color.adjust($primary, $lightness: -10%); // Replaced darken()
+$headings-color: $secondary;
+$text-muted: $info;
+
+// Use Bootstrap's SCSS
+@use "../../node_modules/bootstrap/scss/bootstrap" with (
+  $primary: $primary,
+  $secondary: $secondary,
+  $light: $light,
+  $success: $success,
+  $info: $info,
+  $warning: $warning,
+  $danger: $danger,
+  $body-bg: $body-bg,
+  $navbar-light-color: $navbar-light-color,
+  $navbar-light-active-color: $navbar-light-active-color,
+  $btn-border-radius: $btn-border-radius,
+  $btn-padding-y: $btn-padding-y,
+  $btn-padding-x: $btn-padding-x,
+  $card-bg: $card-bg,
+  $card-border-color: $card-border-color,
+  $link-color: $link-color,
+  $link-hover-color: $link-hover-color,
+  $headings-color: $headings-color,
+  $text-muted: $text-muted
+);

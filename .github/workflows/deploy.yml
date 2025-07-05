@@ -1,0 +1,104 @@
+name: Deploy Node.js App Hippogriff
+
+on:
+  push:
+    branches:
+      - prod  # Trigger on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Install terser globally for minification
+      - name: Install terser for minification
+        run: npm install -g terser
+
+      # Minify JavaScript files
+      - name: Minify JavaScript files
+        run: |
+          # Create js/min directory
+          mkdir -p public/js/min
+          
+          # Find all JS files in public/js and subdirectories, excluding the min folder
+          # and minify them all into the flat js/min directory
+          find public/js -name "*.js" -not -path "*/min/*" | while read file; do
+            # Extract just the filename without path and extension, then add .min.js
+            filename=$(basename "$file" .js)
+            minified_filename="${filename}.min.js"
+            echo "Minifying $file -> public/js/min/$minified_filename"
+            terser "$file" -o "public/js/min/$minified_filename" -c -m
+          done
+
+      # Deploy to server via SSH
+      - name: Deploy to server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          TARGET_DIR: ${{ secrets.TARGET_DIR }}  # e.g., /home/username/your-app
+        run: |
+          # Set up SSH
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          eval $(ssh-agent -s)
+          ssh-add private_key
+
+          # Create target directory if it doesn't exist
+          ssh -o StrictHostKeyChecking=no $USERNAME@$HOST "mkdir -p $TARGET_DIR"
+
+          # Rsync project files to server
+          rsync -avz --delete --exclude '.git' --exclude 'node_modules' -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ $USERNAME@$HOST:$TARGET_DIR
+
+          # SSH into server to install dependencies and restart app
+          ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << EOF
+            cd $TARGET_DIR
+            npm install
+            pm2 restart all || pm2 start server.js --name "hippogriff"
+            pm2 save
+          EOF
+
+      # Optional: Configure Nginx and SSL
+      - name: Configure Nginx and SSL
+        if: env.CONFIGURE_NGINX == 'true'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          DOMAIN: ${{ secrets.DOMAIN }}  # e.g., yourdomain.com
+        run: |
+            ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << EOF
+              # Create Nginx config
+              sudo bash -c "cat > /etc/nginx/sites-available/your-app <<NGINX
+              server {
+                  listen 80;
+                  server_name $DOMAIN;
+                  location / {
+                      proxy_pass http://localhost:3000;  # Adjust port if needed
+                      proxy_http_version 1.1;
+                      proxy_set_header Upgrade \\\$http_upgrade;
+                      proxy_set_header Connection 'upgrade';
+                      proxy_set_header Host \\\$host;
+                      proxy_cache_bypass \\\$http_upgrade;
+                  }
+              }
+            NGINX"
+
+                  # Enable Nginx config
+                  sudo ln -sf /etc/nginx/sites-available/your-app /etc/nginx/sites-enabled/
+                  sudo nginx -t && sudo systemctl reload nginx
+      
+                  # Obtain SSL certificate with Certbot
+                  sudo certbot --nginx -d $DOMAIN --non-interactive --agree-tos --email charlessjones13@gmail.com
+                EOF

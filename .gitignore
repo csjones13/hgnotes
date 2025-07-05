@@ -1,0 +1,41 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build and distribuion files
+/dist
+/build
+
+# Logs
+logs/
+*.log
+pino-dev.log
+
+# Editor and IDE Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db 
+
+# Public Uploads
+public/uploads/
+
+# Miscellaneous
+*.bak
+*.tmp
+*.backup
