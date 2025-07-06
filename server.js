@@ -5,7 +5,7 @@ const app = require('./src/app');
 const { connectDB } = require('./config/database');
 
 //get port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Create HTTP server tests
 const server = http.createServer(app);
