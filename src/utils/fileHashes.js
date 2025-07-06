@@ -51,6 +51,12 @@ const fileHashParser = (path) => {
             sortedHashes['sw.js'].hash = fileHashes[key].hash;
             sortedHashes['sw.js'].path = 'sw.js'; // Store the full path which is just 'sw.js'
         }
+        
+        if(key.indexOf('manifest.json') !== -1) {
+            sortedHashes['manifest.json'] = {};
+            sortedHashes['manifest.json'].hash = fileHashes[key].hash;
+            sortedHashes['manifest.json'].path = 'manifest.json'; // Store the full path which is just 'sw.js'
+        }
     });
 
     return sortedHashes;

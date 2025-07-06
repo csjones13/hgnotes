@@ -36,6 +36,8 @@ const generateIndexHtml = (req, csp, nonce, fileHashes) => {
                     
                     <!-- Set the favicon -->
                     <link rel="icon" href="/favicon.png">
+                    <! -- set the manifest for PWA -->
+                    <link rel="manifest" href="/manifest.json?v=${fH["manifest.json"].hash}">
 
                     <script nonce="${nonce}">
                         window.__FILE_HASHES__ = ${fileHashes};
