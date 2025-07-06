@@ -1,14 +1,37 @@
 // Import the sass:color module for color.adjust
 @use "sass:color";
 
-// Custom variables based on hippogriff image
-$primary: #F28C38;
-$secondary: #8B4513;
-$light: #F5F1E9;
-$success: #D2B48C;
-$info: #E0D7C2;
-$warning: #F4A261;
-$danger: #7A3D1A;
+// Override Bootstrap default variables
+$primary:       #000000;
+$secondary:     #2B2B2B;
+$success:       #28a745; // Optional: adjust to fit scheme
+$info:          #17a2b8; // Optional: adjust or darken
+$warning:       #ffc107; // Optional: fits contrast
+$danger:        #dc3545; // Optional
+$light:         #F5F5F5;
+$dark:          #0A0A0A;
+
+// Custom grayscale shades
+$gray-100: #F5F5F5;
+$gray-200: #E0E0E0;
+$gray-300: #D0D0D0;
+$gray-400: #B0B0B0;
+$gray-500: #909090;
+$gray-600: #707070;
+$gray-700: #505050;
+$gray-800: #2B2B2B;
+$gray-900: #0A0A0A;
+
+// Backgrounds
+$body-bg:       #000000;
+$body-color:    #F5F5F5;
+$link-color:    #D0D0D0;
+
+// Optional: tweak buttons
+$btn-primary-bg: #000000;
+$btn-primary-color: #D0D0D0;
+$btn-primary-border-color: #2B2B2B;
+
 
 $body-bg: $light;
 $navbar-light-color: $secondary;

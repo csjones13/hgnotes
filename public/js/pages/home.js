@@ -48,7 +48,7 @@ window.__CLASSES__.home =  class home {
                             <div class="col-12">
                                 <!-- Centered Hero Icon/Logo -->
                                 <div class="hero-icon-container mb-4">
-                                    <img src="/images/hg144.jpg" alt="Hippogriff" class="hero-icon rounded-3 shadow-lg">
+                                    <img src="/images/hg144.png" alt="Hippogriff" class="hero-icon rounded-3 shadow-lg">
                                 </div>
                                 
                                 <!-- Hero Content -->
