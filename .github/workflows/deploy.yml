@@ -25,6 +25,26 @@ jobs:
       - name: Install terser for minification
         run: npm install -g terser
 
+      # Install clean-css-cli for CSS minification
+      - name: Install clean-css-cli for minification
+        run: npm install -g clean-css-cli
+
+      # Minify CSS files
+      - name: Minify CSS files
+        run: |
+          # Create css/min directory
+          mkdir -p public/css/min
+          
+          # Find all CSS files in public/css and subdirectories, excluding the min folder
+          # and minify them all into the flat css/min directory
+          find public/css -name "*.css" -not -path "*/min/*" | while read file; do
+            # Extract just the filename without path and extension, then add .min.css
+            filename=$(basename "$file" .css)
+            minified_filename="${filename}.min.css"
+            echo "Minifying $file -> public/css/min/$minified_filename"
+            cleancss -o "public/css/min/$minified_filename" "$file"
+          done
+
       # Minify JavaScript files
       - name: Minify JavaScript files
         run: |

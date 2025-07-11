@@ -1,70 +1,149 @@
 // Import the sass:color module for color.adjust
 @use "sass:color";
 
-// Override Bootstrap default variables
-$primary:       #000000;
-$secondary:     #2B2B2B;
-$success:       #28a745; // Optional: adjust to fit scheme
-$info:          #17a2b8; // Optional: adjust or darken
-$warning:       #ffc107; // Optional: fits contrast
-$danger:        #dc3545; // Optional
-$light:         #F5F5F5;
-$dark:          #0A0A0A;
+// Core colors inspired by the logo
+$primary:       #ffffff; // Bright white for highlights
+$secondary:     #2B2B2B; // Graphite dark gray
+$success:       #4CAF50; // Optional green (modern tone)
+$info:          #26C6DA; // Slightly brighter cyan
+$warning:       #FFB300; // Stronger yellow
+$danger:        #EF5350; // Softer red for contrast
+$light:         #EDEDED; // Near-white
+$dark:          #000000; // Absolute black for backgrounds
 
-// Custom grayscale shades
-$gray-100: #F5F5F5;
-$gray-200: #E0E0E0;
-$gray-300: #D0D0D0;
-$gray-400: #B0B0B0;
-$gray-500: #909090;
-$gray-600: #707070;
-$gray-700: #505050;
-$gray-800: #2B2B2B;
-$gray-900: #0A0A0A;
+// Custom grayscale: sharp contrast for edgy design
+$gray-100: #EDEDED;
+$gray-200: #CCCCCC;
+$gray-300: #AAAAAA;
+$gray-400: #888888;
+$gray-500: #666666;
+$gray-600: #444444;
+$gray-700: #2B2B2B;
+$gray-800: #141414;
+$gray-900: #000000;
 
-// Backgrounds
+// Backgrounds and text
 $body-bg:       #000000;
-$body-color:    #F5F5F5;
-$link-color:    #D0D0D0;
+$body-color:    #FFFFFF;
+$link-color:    #CCCCCC;
+$link-hover-color: #FFFFFF;
 
-// Optional: tweak buttons
-$btn-primary-bg: #000000;
-$btn-primary-color: #D0D0D0;
+// Buttons (styled after the white dragon highlight streaks)
+$btn-primary-bg:        #FFFFFF;
+$btn-primary-color:     #000000;
 $btn-primary-border-color: #2B2B2B;
 
+$btn-secondary-bg:      #2B2B2B;
+$btn-secondary-color:   #FFFFFF;
+$btn-secondary-border-color: #444444;
 
-$body-bg: $light;
-$navbar-light-color: $secondary;
-$navbar-light-active-color: $primary;
+// Navigation and UI components
+$nav-link-color: #CCCCCC;
+$nav-link-hover-color: #FFFFFF;
+$navbar-dark-color: #CCCCCC;
+$navbar-dark-hover-color: #FFFFFF;
+$navbar-dark-active-color: $primary;
+$navbar-dark-toggler-border-color: $secondary;
+
+// Form controls
+$input-bg: #141414;
+$input-color: #FFFFFF;
+$input-border-color: #444444;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+
+// Card styling
+$card-bg: #0A0A0A;
+$card-border-color: #2B2B2B;
+$card-color: #FFFFFF;
+$card-cap-bg: rgba(255, 255, 255, 0.03);
+$card-cap-color: #CCCCCC;
+
+// Additional component styling
 $btn-border-radius: 0.25rem;
 $btn-padding-y: 0.5rem;
 $btn-padding-x: 1rem;
-$card-bg: $light;
-$card-border-color: $info;
-$link-color: $primary;
-$link-hover-color: color.adjust($primary, $lightness: -10%); // Replaced darken()
-$headings-color: $secondary;
-$text-muted: $info;
+$headings-color: $primary;
+$text-muted: $gray-400;
 
 // Use Bootstrap's SCSS
 @use "../../node_modules/bootstrap/scss/bootstrap" with (
+  // Core theme colors
   $primary: $primary,
   $secondary: $secondary,
   $light: $light,
+  $dark: $dark,
   $success: $success,
   $info: $info,
   $warning: $warning,
   $danger: $danger,
+  
+  // Grayscale palette
+  $gray-100: $gray-100,
+  $gray-200: $gray-200,
+  $gray-300: $gray-300,
+  $gray-400: $gray-400,
+  $gray-500: $gray-500,
+  $gray-600: $gray-600,
+  $gray-700: $gray-700,
+  $gray-800: $gray-800,
+  $gray-900: $gray-900,
+  
+  // Body and text
   $body-bg: $body-bg,
-  $navbar-light-color: $navbar-light-color,
-  $navbar-light-active-color: $navbar-light-active-color,
-  $btn-border-radius: $btn-border-radius,
-  $btn-padding-y: $btn-padding-y,
-  $btn-padding-x: $btn-padding-x,
-  $card-bg: $card-bg,
-  $card-border-color: $card-border-color,
+  $body-color: $body-color,
   $link-color: $link-color,
   $link-hover-color: $link-hover-color,
   $headings-color: $headings-color,
-  $text-muted: $text-muted
+  $text-muted: $text-muted,
+  
+  // Buttons
+  $btn-border-radius: $btn-border-radius,
+  $btn-padding-y: $btn-padding-y,
+  $btn-padding-x: $btn-padding-x,
+  
+  // Cards
+  $card-bg: $card-bg,
+  $card-border-color: $card-border-color,
+  $card-color: $card-color,
+  $card-cap-bg: $card-cap-bg,
+  $card-cap-color: $card-cap-color,
+  
+  // Navigation
+  $nav-link-color: $nav-link-color,
+  $nav-link-hover-color: $nav-link-hover-color,
+  $navbar-dark-color: $navbar-dark-color,
+  $navbar-dark-hover-color: $navbar-dark-hover-color,
+  $navbar-dark-active-color: $navbar-dark-active-color,
+  $navbar-dark-toggler-border-color: $navbar-dark-toggler-border-color,
+  
+  // Form controls
+  $input-bg: $input-bg,
+  $input-color: $input-color,
+  $input-border-color: $input-border-color,
+  $input-focus-border-color: $input-focus-border-color,
+  $input-focus-box-shadow: $input-focus-box-shadow
 );
+
+// Custom button overrides (applied after Bootstrap)
+.btn-primary {
+  background-color: $btn-primary-bg;
+  color: $btn-primary-color;
+  border-color: $btn-primary-border-color;
+  
+  &:hover {
+    background-color: darken($btn-primary-bg, 10%);
+    border-color: darken($btn-primary-border-color, 10%);
+  }
+}
+
+.btn-secondary {
+  background-color: $btn-secondary-bg;
+  color: $btn-secondary-color;
+  border-color: $btn-secondary-border-color;
+  
+  &:hover {
+    background-color: lighten($btn-secondary-bg, 10%);
+    border-color: lighten($btn-secondary-border-color, 10%);
+  }
+}

@@ -13,6 +13,14 @@ window.__CLASSES__.CLASSNAME =  class CLASSNAME {
     set setData(val) {
         this.data = val;
     }
+    
+    getClassName() {
+        return this.constructor.name;
+    }
+
+    get className() {
+        return this.getClassName();
+    }
 
     get destroy() {
         this.controller.abort();
@@ -27,10 +35,25 @@ window.__CLASSES__.CLASSNAME =  class CLASSNAME {
         if(!that.dependencies || that.dependencies.length == 0) { that.dependencies = []; } 
         if(that.settings && that.settings.skipDependencies) { that.dependencies = []; }
 
-        JSLoader('loadDependencies', { dependencies: that.dependencies } )
+         JSLoader('loadDependencies', { dependencies: that.dependencies } )
             .then(() =>  {
-                that.init(that);
+                CSSLoader(that.className)
+                    .then(() => {
+                        that.init(that);
+                    });
             });
+    }
+
+    createHtml(that) {
+        let html = '';
+
+        html = `<div id="${that.id}" class="test">
+                    <h1>Test Component</h1>
+                    <button class="btn btn-primary" data-tag="testbtn">Click Me</button>
+                    <p><a href="/about">Go to About</a></p>
+                    <p><a href="/forms">Go to Forms</a></p>
+                </div>`;
+        return html;
     }
 
     init(that) {      
@@ -38,13 +61,10 @@ window.__CLASSES__.CLASSNAME =  class CLASSNAME {
 
         //PROCESS DATA IF NEEDED HERE
 
+        let html = '';
+        html = that.createHtml(that);
         // Render the component HTML
-        that.element.innerHTML += `<div id="${that.id}" class="test">
-                                                        <h1>Test Component</h1>
-                                                        <button class="btn btn-primary" data-tag="testbtn">Click Me</button>
-                                                        <p><a href="/about">Go to About</a></p>
-                                                        <p><a href="/forms">Go to Forms</a></p>
-                                                    </div>`;
+        that.element.innerHTML = html;
 
         // ADD SECRET BUTTONS HERE
 

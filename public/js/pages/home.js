@@ -14,6 +14,14 @@ window.__CLASSES__.home =  class home {
         this.data = val;
     }
 
+    getClassName() {
+        return this.constructor.name;
+    }
+    
+    get className() {
+        return this.getClassName();
+    }
+
     get destroy() {
         this.controller.abort();
         this.element.remove();
@@ -29,18 +37,17 @@ window.__CLASSES__.home =  class home {
 
         JSLoader('loadDependencies', { dependencies: that.dependencies } )
             .then(() =>  {
-                that.init(that);
+                CSSLoader(that.className)
+                    .then(() => {
+                        that.init(that);
+                    });
             });
     }
 
-    init(that) {      
-        // PROCESS MODAL/OVERLAY IF NEEDED HERE
+    createHtml(that) {
+        let html = '';
 
-        //PROCESS DATA IF NEEDED HERE
-
-        // Render the component HTML
-        that.element.innerHTML += `
-            <div id="${that.id}" class="home-page">
+        html = ` <div id="${that.id}" class="home-page">
                 <!-- Hero/Masthead Section -->
                 <section class="hero-section position-relative overflow-hidden">
                     <div class="container py-5">
@@ -116,386 +123,20 @@ window.__CLASSES__.home =  class home {
                         </div>
                     </div>
                 </section>
-            </div>
+            </div>`;
 
-            <style>
-                .hero-section {
-                    background: linear-gradient(135deg, var(--bs-light) 0%, var(--bs-success) 100%);
-                    min-height: 100vh;
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    color: var(--bs-dark);
-                }
+        return html;
+    }
 
-                .hero-icon-container {
-                    animation: fadeInDown 1s ease-out;
-                }
+    init(that) {      
+        // PROCESS MODAL/OVERLAY IF NEEDED HERE
 
-                .hero-icon {
-                    width: 120px;
-                    height: 120px;
-                    object-fit: cover;
-                    border: 4px solid var(--bs-primary);
-                    transition: all 0.3s ease;
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-                }
+        //PROCESS DATA IF NEEDED HERE
 
-                .hero-icon:hover {
-                    transform: scale(1.1) rotate(5deg);
-                    border-color: var(--bs-warning);
-                    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-                }
-
-                .hero-title {
-                    color: var(--bs-dark);
-                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-                }
-
-                .text-accent {
-                    color: var(--bs-primary) !important;
-                }
-
-                .hero-subtitle {
-                    color: var(--bs-gray-700);
-                    max-width: 600px;
-                    margin: 0 auto;
-                }
-
-                .hero-content {
-                    animation: fadeInUp 1s ease-out 0.3s both;
-                }
-
-                .hero-buttons .btn {
-                    transition: all 0.3s ease;
-                    border-radius: 50px;
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    border-width: 2px;
-                }
-
-                .hero-buttons .btn:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-                }
-
-                .btn-primary {
-                    background-color: var(--bs-primary);
-                    border-color: var(--bs-primary);
-                    color: white;
-                }
-
-                .btn-primary:hover {
-                    background-color: var(--bs-warning);
-                    border-color: var(--bs-warning);
-                    color: var(--bs-dark);
-                }
-
-                .btn-outline-dark {
-                    color: var(--bs-dark);
-                    border-color: var(--bs-dark);
-                }
-
-                .btn-outline-dark:hover {
-                    background-color: var(--bs-dark);
-                    border-color: var(--bs-dark);
-                    color: white;
-                }
-
-                .feature-item {
-                    animation: fadeIn 1s ease-out 0.8s both;
-                    color: var(--bs-gray-700);
-                    font-weight: 500;
-                }
-
-                .decoration-circle {
-                    width: 300px;
-                    height: 300px;
-                    border-radius: 50%;
-                    background: rgba(242, 140, 56, 0.1);
-                    animation: float 6s ease-in-out infinite;
-                }
-
-                .decoration-triangle {
-                    width: 0;
-                    height: 0;
-                    border-left: 150px solid transparent;
-                    border-right: 150px solid transparent;
-                    border-bottom: 200px solid rgba(139, 69, 19, 0.05);
-                    animation: float 8s ease-in-out infinite reverse;
-                }
-
-                .quick-nav-section {
-                    border-top: 3px solid var(--bs-primary);
-                    background-color: white !important;
-                }
-
-                .nav-links .btn {
-                    border-radius: 25px;
-                    transition: all 0.3s ease;
-                    border-width: 2px;
-                }
-
-                .nav-links .btn:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-                }
-
-                @keyframes fadeInDown {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes fadeIn {
-                    from {
-                        opacity: 0;
-                    }
-                    to {
-                        opacity: 1;
-                    }
-                }
-
-                @keyframes float {
-                    0%, 100% {
-                        transform: translateY(0px);
-                    }
-                    50% {
-                        transform: translateY(-20px);
-                    }
-                }
-
-                @media (max-width: 768px) {
-                    .hero-section {
-                        min-height: 80vh;
-                        padding: 1rem 0;
-                    }
-                    
-                    .container {
-                        padding-left: 1rem;
-                        padding-right: 1rem;
-                    }
-                    
-                    .hero-icon {
-                        width: 100px;
-                        height: 100px;
-                        border-width: 3px;
-                    }
-                    
-                    .display-2 {
-                        font-size: 2.5rem;
-                        line-height: 1.2;
-                    }
-                    
-                    .hero-subtitle {
-                        font-size: 1.1rem;
-                        padding: 0 1rem;
-                    }
-                    
-                    .hero-buttons {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 1rem !important;
-                    }
-                    
-                    .hero-buttons .btn {
-                        width: 250px;
-                        font-size: 1rem;
-                    }
-                    
-                    .hero-features {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 1rem !important;
-                        margin-top: 2rem;
-                    }
-                    
-                    .feature-item {
-                        justify-content: center;
-                        text-align: center;
-                        width: 100%;
-                        max-width: 200px;
-                    }
-                    
-                    .nav-links {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 1rem !important;
-                    }
-                    
-                    .nav-links .btn {
-                        width: 200px;
-                        font-size: 0.9rem;
-                    }
-                    
-                    .decoration-circle {
-                        width: 200px;
-                        height: 200px;
-                    }
-                    
-                    .decoration-triangle {
-                        border-left: 100px solid transparent;
-                        border-right: 100px solid transparent;
-                        border-bottom: 130px solid rgba(139, 69, 19, 0.05);
-                    }
-                }
-
-                @media (max-width: 576px) {
-                    .hero-section {
-                        min-height: 70vh;
-                        padding: 0.5rem 0;
-                    }
-                    
-                    .container {
-                        padding-left: 0.75rem;
-                        padding-right: 0.75rem;
-                    }
-                    
-                    .hero-icon {
-                        width: 80px;
-                        height: 80px;
-                        border-width: 2px;
-                    }
-                    
-                    .hero-icon-container {
-                        margin-bottom: 1.5rem !important;
-                    }
-                    
-                    .display-2 {
-                        font-size: 2rem;
-                        line-height: 1.1;
-                        margin-bottom: 1rem !important;
-                    }
-                    
-                    .hero-subtitle {
-                        font-size: 1rem;
-                        line-height: 1.4;
-                        padding: 0 0.5rem;
-                        margin-bottom: 1.5rem !important;
-                    }
-                    
-                    .hero-buttons {
-                        margin-bottom: 1.5rem !important;
-                    }
-                    
-                    .hero-buttons .btn {
-                        width: 220px;
-                        font-size: 0.9rem;
-                        padding: 0.75rem 1.5rem !important;
-                    }
-                    
-                    .feature-item {
-                        font-size: 0.9rem;
-                        max-width: 180px;
-                    }
-                    
-                    .feature-item i {
-                        font-size: 1rem;
-                    }
-                    
-                    .quick-nav-section {
-                        padding: 1rem 0 !important;
-                    }
-                    
-                    .nav-links .btn {
-                        width: 180px;
-                        font-size: 0.85rem;
-                        padding: 0.5rem 1rem !important;
-                    }
-                    
-                    .decoration-circle {
-                        width: 150px;
-                        height: 150px;
-                    }
-                    
-                    .decoration-triangle {
-                        border-left: 75px solid transparent;
-                        border-right: 75px solid transparent;
-                        border-bottom: 100px solid rgba(139, 69, 19, 0.05);
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .hero-section {
-                        min-height: 65vh;
-                    }
-                    
-                    .hero-icon {
-                        width: 70px;
-                        height: 70px;
-                    }
-                    
-                    .display-2 {
-                        font-size: 1.75rem;
-                    }
-                    
-                    .hero-subtitle {
-                        font-size: 0.95rem;
-                    }
-                    
-                    .hero-buttons .btn {
-                        width: 200px;
-                        font-size: 0.85rem;
-                    }
-                    
-                    .feature-item {
-                        font-size: 0.85rem;
-                        max-width: 160px;
-                    }
-                    
-                    .nav-links .btn {
-                        width: 160px;
-                        font-size: 0.8rem;
-                    }
-                }
-
-                @media (max-width: 360px) {
-                    .hero-icon {
-                        width: 60px;
-                        height: 60px;
-                    }
-                    
-                    .display-2 {
-                        font-size: 1.5rem;
-                    }
-                    
-                    .hero-subtitle {
-                        font-size: 0.9rem;
-                        line-height: 1.3;
-                    }
-                    
-                    .hero-buttons .btn {
-                        width: 180px;
-                        font-size: 0.8rem;
-                    }
-                    
-                    .feature-item {
-                        font-size: 0.8rem;
-                        max-width: 140px;
-                    }
-                    
-                    .nav-links .btn {
-                        width: 140px;
-                        font-size: 0.75rem;
-                    }
-                }
-            </style>
-        `;
+        let html = '';
+        html = that.createHtml(that);
+        // Render the component HTML
+        that.element.innerHTML = html;
 
         // ADD SECRET BUTTONS HERE
 

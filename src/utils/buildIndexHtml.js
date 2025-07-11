@@ -62,7 +62,7 @@ const generateIndexHtml = (req, csp, nonce, fileHashes) => {
                 </head>
                 <body>
                     <div id="root"></div>
-                    <script type="module" nonce="${nonce}" src="/js/app.js"></script>
+                    <script type="module" nonce="${nonce}" src="/js/app.js?v=${fH["app.js"].hash}"></script>
                     <script type="text/javascript" nonce="${nonce}">
                         
 
