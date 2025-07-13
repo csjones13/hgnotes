@@ -61,11 +61,10 @@ window.__CLASSES__.home =  class home {
                                 <!-- Hero Content -->
                                 <div class="hero-content">
                                     <h1 class="display-2 fw-bold mb-4 text-shadow hero-title">
-                                        Welcome to <span class="text-accent">Hippogriff</span>
+                                        <span class="text-accent">Hippogriff Notes</span>
                                     </h1>
                                     <p class="lead mb-4 fs-4 hero-subtitle">
-                                        Experience the power of modern web development with our cutting-edge platform. 
-                                        Build faster, scale better, and deliver exceptional user experiences.
+                                        Experience the next generation of note-taking with our offline first platform independent app
                                     </p>
                                     <div class="hero-buttons d-flex flex-wrap gap-3 mb-4 justify-content-center">
                                         <button class="btn btn-primary btn-lg px-4 py-3 fw-semibold" data-tag="get-started">
@@ -89,35 +88,6 @@ window.__CLASSES__.home =  class home {
                                             <span>Easy to Use</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Decorative Elements -->
-                    <div class="hero-decoration position-absolute top-0 end-0 opacity-10">
-                        <div class="decoration-circle"></div>
-                    </div>
-                    <div class="hero-decoration position-absolute bottom-0 start-0 opacity-10">
-                        <div class="decoration-triangle"></div>
-                    </div>
-                </section>
-
-                <!-- Quick Navigation Section -->
-                <section class="quick-nav-section bg-light py-4">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                <div class="nav-links d-flex flex-wrap justify-content-center gap-3">
-                                    <a href="/about" class="btn btn-outline-secondary">
-                                        <i class="fas fa-info-circle me-2"></i>About Us
-                                    </a>
-                                    <a href="/forms" class="btn btn-outline-secondary">
-                                        <i class="fas fa-edit me-2"></i>Forms
-                                    </a>
-                                    <button class="btn btn-outline-primary" data-tag="testbtn">
-                                        <i class="fas fa-flask me-2"></i>Test API
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -159,17 +129,17 @@ window.__CLASSES__.home =  class home {
                         CPost('/api/test', {
                             body: JSON.stringify({ message: 'Button clicked!' }),
                         });
-                        break;
+                    break;
                     case 'get-started':
                         // Add your get started logic here
                         console.log('Get Started clicked');
                         // You could navigate to a signup page or show a modal
-                        break;
+                    break;
                     case 'learn-more':
                         // Add your learn more logic here
                         console.log('Learn More clicked');
                         // You could navigate to an about page or show more information
-                        break;
+                    break;
                 }
             }
         });
