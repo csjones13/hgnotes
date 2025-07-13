@@ -25,12 +25,13 @@ window.__FUNCTIONS__.router = (params = {}) => {
 
     let sComponent = componentArray[1] || 'home'; // Default to 'home' if no component is specified
 
-    let page = {};
+    let page = {}, nav = true, footer = true;
     switch(sComponent) {
         default:
             page.key = 'home';
             page.name = 'Home';
             page.component = 'home';
+            nav = false, footer = false; // No navbar or footer on home page
         break;
         case 'about':
             page.key = 'about';
@@ -45,6 +46,29 @@ window.__FUNCTIONS__.router = (params = {}) => {
     }
 
     document.title = `${window.__APP_TITLE__} | ${page.name}`;
+
+    if(nav) {
+        JSLoader('navbar', { element: document.getElementById('nav')}).then((c) => {
+            if(c && typeof c === 'object') {
+                console.log(`Rendering navbar component`);
+                c.render;
+            } else {
+                console.error(`Navbar component not found or does not have a render method.`);
+            }
+        });     
+    }
+
+    if(footer) {
+        JSLoader('footer', { element: document.getElementById('footer')}).then((c) => {
+            if(c && typeof c === 'object') {
+                console.log(`Rendering footer component`);
+                c.render;
+            } else {
+                console.error(`Footer component not found or does not have a render method.`);
+            }
+        });     
+    }
+
     JSLoader(page.component, { element: d, }).then((c) => {
         if(c && typeof c === 'object') {
             console.log(`Rendering component: ${page.name}`);

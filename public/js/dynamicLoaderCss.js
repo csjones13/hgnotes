@@ -6,9 +6,10 @@ export function cssLoader(key) {
     //load the hashes json
     const fileHashes = window.__FILE_HASHES__;
 
-    //ensure the hash exists
+     //css hashes do not need to exist. just note if its not there
     if (!fileHashes || !fileHashes[`${key}.css`]) {
-        throw new Error(`No file hash found for key: ${key}`);
+        console.log(`No file hash found for key: ${key}`);
+        return Promise.resolve(false); // Resolve with false if no hash is found
     }
 
     //set the import path as via minimized files all min files are in one folder

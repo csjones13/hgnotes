@@ -83,8 +83,13 @@ import(`./dynamicLoader.js?v=${window.__FILE_HASHES__['dynamicLoader.js'].hash}`
                             }
                         });
 
-                        // Handle popstate events (back/forward navigation) this will also initialize the router on page load
-                        window.addEventListener('popstate', JSLoader('router'));
+                        // Handle popstate events (back/forward navigation) and initialize the router on page load
+                        window.addEventListener('popstate', () => {
+                            JSLoader('router');
+                        });
+
+                        // Also call router once on initial load
+                        JSLoader('router');
                     
                 
                 })

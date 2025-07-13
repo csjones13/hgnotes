@@ -1,6 +1,9 @@
 /*
 START GENERIC STYLES
 */
+#root {
+    height: 100vh;
+}
 .modal.show {
     padding-left: 0px !important;
 }

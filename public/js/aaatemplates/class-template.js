@@ -25,7 +25,7 @@ window.__CLASSES__.CLASSNAME =  class  {
 
     get destroy() {
         this.controller.abort();
-        this.element.remove();
+        document.getElementById(this.id).remove();
         this.container = null;
         delete window.__COMPONENTS__[this.id];
     }
