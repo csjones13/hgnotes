@@ -1,5 +1,6 @@
-window.__CLASSES__.CLASSNAME =  class CLASSNAME {
+window.__CLASSES__.CLASSNAME =  class  {
     constructor({element = '', settings = {}, data = '', url = ''} = {element: '', settings: {}, data: '', url: ''}) {
+        this.name = 'CLASSNAME';
         this.element = element;
         this.settings = settings;
         this.data = data;
@@ -15,7 +16,7 @@ window.__CLASSES__.CLASSNAME =  class CLASSNAME {
     }
     
     getClassName() {
-        return this.constructor.name;
+        return this.name;
     }
 
     get className() {

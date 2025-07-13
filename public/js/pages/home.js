@@ -1,5 +1,6 @@
-window.__CLASSES__.home =  class home {
+window.__CLASSES__.home =  class {
     constructor({element = '', settings = {}, data = '', url = ''} = {element: '', settings: {}, data: '', url: ''}) {
+        this.name = 'home';
         this.element = element;
         this.settings = settings;
         this.data = data;
@@ -15,7 +16,7 @@ window.__CLASSES__.home =  class home {
     }
 
     getClassName() {
-        return this.constructor.name;
+        return this.name;
     }
     
     get className() {
