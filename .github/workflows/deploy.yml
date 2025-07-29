@@ -79,13 +79,13 @@ jobs:
           ssh -o StrictHostKeyChecking=no $USERNAME@$HOST "mkdir -p $TARGET_DIR"
 
           # Rsync project files to server
-          rsync -avz --delete --exclude '.git' --exclude 'node_modules' -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ $USERNAME@$HOST:$TARGET_DIR
+          rsync -avz --delete --exclude '.git' --exclude 'node_modules' --exclude '.env' -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ $USERNAME@$HOST:$TARGET_DIR
 
           # SSH into server to install dependencies and restart app
           ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << EOF
             cd $TARGET_DIR
             npm install
-            pm2 restart all || pm2 start server.js --name "hippogriff"
+            pm2 restart all || pm2 start server.js --name "hg notes"
             pm2 save
           EOF
 
